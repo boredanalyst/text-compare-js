@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Text Compare</title>
+    <script>
+        function compare_text(){
+            var txt_A = document.getElementById("txtA").value;
+            var txt_B = document.getElementById("txtB").value;
+
+            var txtA_words = txt_A.split(" ");
+            var txtB_words = txt_B.split(" ");
+
+            // Finding additional values.
+            // Values that are in A and not in B.
+
+            var additional_values = []
+
+            for (var i = 0; i < txtA_words.length; i++) {
+                if (txtB_words.indexOf(txtA_words[i]) !== -1) {
+                } else {
+                    additional_values.push(txtA_words[i])
+                }
+            }
+
+            alert(`Additional values: ${additional_values}`)
+
+            // Finding missing values.
+            // Values that are in B but not in A.
+
+            var missing_values = []
+
+            for (var i = 0; i < txtB_words.length; i++) {
+                if (txtA_words.indexOf(txtB_words[i]) !== -1) {
+                } else {
+                    missing_values.push(txtB_words[i])
+                }
+            }
+
+            alert(`Missing values: ${missing_values}`)
+
+        }
+    </script>
+
+    <style>
+        * { 
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        body {
+            background-color: navy;
+            display:flex;
+            justify-content: center;
+            height:100%;
+            padding:26vh;
+        }
+
+        body > section {
+            background-color:white;
+            width:50%;
+            min-width:50%;
+            display:flex;
+            flex-direction:column;
+            padding:1vh;
+            border-radius:1vh;
+            box-shadow:4px 4px 4px rgb(1, 1, 58);
+        }
+
+        h1 {
+            font-family:'Courier New', Courier, monospace;
+            text-align:center;
+        }
+
+        section > section {
+            display:flex;
+        }
+
+        article {
+            display:flex;
+            flex-direction:column;
+            flex:1;
+            width:40%;
+            min-width:40%;
+            margin-left:1vh;
+        }
+
+        article > * {
+            margin: 0.5vh;
+        }
+
+        input[type="text"] {
+            width:70%;
+            min-width:70%;
+            height:10vh;
+            min-height:10vh;
+        }
+
+        button {
+            width:70%;
+            min-width:60%;
+        }
+
+        body > section > article {
+            display:flex;
+            align-items: center;
+            width:100%;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<section class="main">
+    <h1>TEXT COMPARE</h1>
+    <section>
+        <article>
+        <label for ="textA">Textbox A</label>
+        <input type="text" name="textA" id="txtA">
+        </article>
+        <article>
+        <label for ="textB">Textbox B</label>
+        <input type="text" name="textB" id="txtB">
+    </section>
+    <article>
+        <button onclick="compare_text()">Compare</button>
+    </article>
+    
+</section>
+
+</body>
+
+</html>
